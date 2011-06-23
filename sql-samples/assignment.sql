@@ -13,9 +13,9 @@
 
 DROP TABLE IF EXISTS csvmembers;
 DROP TABLE IF EXISTS csvprojects;
+DROP TABLE IF EXISTS projectmembers;
 DROP TABLE IF EXISTS issues;
 DROP TABLE IF EXISTS members;
-DROP TABLE IF EXISTS projectmembers;
 DROP TABLE IF EXISTS projects;
 
 # Creating temporary tables that was imported from csv files
