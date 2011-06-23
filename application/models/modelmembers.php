@@ -1,12 +1,12 @@
 <?php
 
-class Membersmodel extends CI_Model {
+class ModelMembers extends CI_Model {
 
-    function Membersmodel() {
+    function ModelMembers() {
         parent::__construct();
     }
 
-    function get_all_members() {
+    function get_all() {
         $query = $this->db->get('members');
         return $query->result();
     }
