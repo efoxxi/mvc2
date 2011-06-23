@@ -49,6 +49,11 @@ class Emps extends CI_Controller {
         //using url helper is easier, ie
         redirect('emps/index');
     }
+    
+    function restoreempdb() {
+        $this->empsmodel->restoreempdb();
+        redirect('emps/index');
+    }
 
 }
 

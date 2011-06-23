@@ -6,6 +6,8 @@
         <p><?= $heading ?></p>
 
         <?php echo anchor('emps/addemp', 'Add Employee'); ?>
+        <br />
+        <?php echo anchor('emps/restoreempdb', 'Restore Employee DB'); ?>
         <table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
             <tr>
                 <th>Employee ID</th>

@@ -28,6 +28,12 @@ class Empsmodel extends CI_Model {
         //$this->db->delete('emps', array('strEmployeeId' => $this->uri->segment(3)));
     }
 
+    function restoreempdb() {
+        $sql = explode(";", file_get_contents('sql-samples/emps.sql')); // 
+        for($i = 0; $i < count($sql) - 1; $i++)
+            $this->db->query($sql[$i]);
+    }
+
 }
 
 ?>
