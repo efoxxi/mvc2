@@ -17,7 +17,7 @@
             <td><?php echo $row->id; ?></td>
             <td><?php echo $row->name; ?></td>
             <td><?php echo $row->surname; ?></td>
-            <td><?php echo anchor('members/edit' . $row->id, 'Edit'); ?></td>
+            <td><?php echo anchor('members/edit/' . $row->id, 'Edit'); ?></td>
             <td><?php echo anchor('members/delete/' . $row->id, 'Delete'); ?></td>
         </tr>
     <?php endforeach; ?>

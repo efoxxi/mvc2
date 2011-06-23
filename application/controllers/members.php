@@ -24,7 +24,7 @@ class Members extends CI_Controller {
     function add() {
         $data['title'] = "Add Member";
         $data['heading'] = "Add Member";
-        $this->load->view('membersaddview', $data);
+        $this->load->view('membersadd', $data);
     }
 
     function insert() {
@@ -32,11 +32,27 @@ class Members extends CI_Controller {
         $this->membersmodel->insert($data);
         redirect('members/index');
     }
-    
+
+    function edit() {
+        $data['title'] = "Edit Member";
+        $data['heading'] = "Edit Member";
+
+        $this->db->where('id', $this->uri->segment(3));
+        $data['query'] = $this->db->get('members');
+        $this->load->view('membersedit', $data);
+    }
+
+    function update() {
+        $data = $_POST;
+        $this->membersmodel->update($data);
+        redirect('members/index');
+    }
+
     function restoredb() {
         $this->membersmodel->restoredb();
         redirect('members/index');
     }
+
 }
 
 ?>
