@@ -5,12 +5,12 @@ class Members extends CI_Controller {
     private $Item = "Member";
     private $items;
     private $modelitems;
-    
+
     function __construct() {
         parent::__construct();
-        $this->items = strtolower($Item)."s";
-        $this->modelitems = "model".$this->items;
-        $this->load->model($curr);
+        $this->items = strtolower($this->Item) . "s";
+        $this->modelitems = "model" . $this->items;
+        $this->load->model($this->modelitems);
         $this->load->helper('url');
         $this->load->helper('form');
     }
@@ -18,12 +18,12 @@ class Members extends CI_Controller {
     function index() {
         $data['title'] = $this->Item . "s application";
         $data['heading'] = $this->Item . "s list";
-        $data['res'] = $this->{$this->curr}->get_all();
+        $data['res'] = $this->{$this->modelitems}->get_all();
         $this->load->view('view' . $this->items, $data);
     }
 
     function delete() {
-        $this->{$this->curr}->delete();
+        $this->{$this->modelitems}->delete();
         redirect($this->items . '/index');
     }
 
@@ -35,7 +35,7 @@ class Members extends CI_Controller {
 
     function insert() {
         $data = $_POST;
-        $this->{$this->curr}->insert($data);
+        $this->{$this->modelitems}->insert($data);
         redirect($this->items . '/index');
     }
 
@@ -50,12 +50,12 @@ class Members extends CI_Controller {
 
     function update() {
         $data = $_POST;
-        $this->{$this->curr}->update($data);
+        $this->{$this->modelitems}->update($data);
         redirect($this->items . '/index');
     }
 
     function restoredb() {
-        $this->{$this->curr}->restoredb();
+        $this->{$this->modelitems}->restoredb();
         redirect($this->items . '/index');
     }
 
