@@ -1,15 +1,16 @@
 <?php
-
 class Members extends CI_Controller {
 
-    private $Item = "Member";
+    private $Item;
     private $items;
     private $modelitems;
 
     function __construct() {
         parent::__construct();
-        $this->items = strtolower($this->Item) . "s";
-        $this->modelitems = "model" . $this->items;
+        $this->items = strtolower($this->uri->segment(1)); // items
+        $this->Item = strtoupper(substr($this->items, 0, 1)) .
+                substr($this->items, 1, strlen($this->items) - 2); // Item
+        $this->modelitems = "model" . $this->items; // modelitems
         $this->load->model($this->modelitems);
         $this->load->helper('url');
         $this->load->helper('form');
