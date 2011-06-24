@@ -11,6 +11,11 @@ class ModelMembers extends CI_Model {
         return $query->result();
     }
 
+    function get_current_member() {
+        $query = $this->db->get('members where id="' . $this->uri->segment(3) . '"');
+        return $query->result();
+    }
+
     function insert($data) {
         $this->id = $data['id'];
         $this->name = $data['name'];

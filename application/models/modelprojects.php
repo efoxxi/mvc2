@@ -1,32 +1,32 @@
 <?php
 
-class ModelMembers extends CI_Model {
+class ModelProjects extends CI_Model {
 
-    function ModelMembers() {
+    function ModelProjects() {
         parent::__construct();
     }
 
     function get_all() {
-        $query = $this->db->get('members');
+        $query = $this->db->get('projects');
         return $query->result();
     }
 
     function insert($data) {
         $this->id = $data['id'];
-        $this->name = $data['name'];
-        $this->surname = $data['surname'];
-        $this->db->insert('members', $this);
+        $this->projectDetails = $data['projectDetails'];
+        $this->db->insert('projects', $this);
     }
 
     function update($data) {
         $this->id = $data['id'];
-        $this->name = $data['name'];
-        $this->surname = $data['surname'];
-        $this->db->update('members', $this, array('id' => $data['id']));
+        $this->projectDetails = $data['projectDetails'];
+
+
+        $this->db->update('projects', $this, array('id' => $data['oldid']));
     }
 
     function delete() {
-        $this->db->query('delete from members where id = "' . $this->uri->segment(3) . '"');
+        $this->db->query('delete from projects where id = "' . $this->uri->segment(3) . '"');
     }
 
     function restoredb() {
