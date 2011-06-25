@@ -19,7 +19,16 @@ class Modelissues extends ModelIMP {
         $this->type = $data['type'];
         $this->priority = $data['priority'];
         $this->status = $data['status'];
-        $this->db->insert($this->items, $this);
+        
+        $pms = $this->db->query("SELECT projectid, memberid FROM projectmembers")->result();
+        $flag = false;
+        foreach ($pms as $pm) {
+            if($this->projectid == $pm->projectid && $this->memberid == $pm->memberid)
+                $flag = true;
+        }
+        if($flag) $this->db->insert($this->items, $this);
+        
+        return $flag;
     }
 
     function update($data) {
@@ -31,7 +40,7 @@ class Modelissues extends ModelIMP {
         $this->type = $data['type'];
         $this->priority = $data['priority'];
         $this->status = $data['status'];
-        $pms = $this->db->query("select projectid, memberid from projectmembers")->result();
+        $pms = $this->db->query("SELECT projectid, memberid FROM projectmembers")->result();
         $flag = false;
         foreach ($pms as $pm) {
             if($this->projectid == $pm->projectid && $this->memberid == $pm->memberid)
