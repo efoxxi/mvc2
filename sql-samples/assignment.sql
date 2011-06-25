@@ -4,8 +4,6 @@
 #	04/14/2011                                 #
 #                                            #
 # Mikhail Kotov                              #
-# James Zuccon                               #
-# Reece Dixon                                #
 #                                            #
 ##############################################
 
@@ -120,10 +118,10 @@ INSERT INTO projectmembers SELECT DISTINCT p.id, m.id
   FROM members AS m, projects AS p, csvprojects AS cp, csvmembers AS cm
   WHERE cm.projectName = p.id AND m.id = cm.id AND p.id = cp.id;
 
-INSERT INTO issues SELECT DISTINCT NULL,issue, p.id, memberName, issueDetails, issueDate, issueType, priority, status
+INSERT INTO issues SELECT DISTINCT '', issue, p.id, memberName, issueDetails, issueDate, issueType, priority, status
   FROM projects AS p, members AS m, csvprojects AS cp
   WHERE issue NOT LIKE '' AND p.id = cp.id AND m.id = cp.memberName;
 
 # Drop temporary tables
-DROP TABLE IF EXISTS csvmembers;
-DROP TABLE IF EXISTS csvprojects;
+#DROP TABLE IF EXISTS csvmembers;
+#DROP TABLE IF EXISTS csvprojects;

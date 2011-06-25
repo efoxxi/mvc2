@@ -10,7 +10,7 @@ class Modelissues extends ModelIMP {
     }
 
     function insert($data) {
-        $this->id = "NULL";
+        $this->id = "";
         $this->issue = $data['issue'];
         $this->projectid = $data['projectid'];
         $this->memberid = $data['memberid'];
@@ -31,7 +31,15 @@ class Modelissues extends ModelIMP {
         $this->type = $data['type'];
         $this->priority = $data['priority'];
         $this->status = $data['status'];
-        $this->db->update($this->items, $this, array('id' => $data['oldid']));
+        $pms = $this->db->query("select projectid, memberid from projectmembers")->result();
+        $flag = false;
+        foreach ($pms as $pm) {
+            if($this->projectid == $pm->projectid && $this->memberid == $pm->memberid)
+                $flag = true;
+        }
+        if($flag) $this->db->update($this->items, $this, array('id' => $data['oldid']));
+        
+        return $flag;
     }
 
 }
