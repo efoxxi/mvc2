@@ -1,37 +1,42 @@
 <?php
 
-class ModelMembers extends CI_Model {
+class Modelissues extends CI_Model {
 
-    function ModelMembers() {
+    function Modelissues() {
         parent::__construct();
     }
 
     function get_all() {
-        $query = $this->db->get('members');
-        return $query->result();
-    }
-
-    function get_current_member() {
-        $query = $this->db->get('members where id="' . $this->uri->segment(3) . '"');
+        $query = $this->db->get('issues');
         return $query->result();
     }
 
     function insert($data) {
         $this->id = $data['id'];
-        $this->name = $data['name'];
-        $this->surname = $data['surname'];
-        $this->db->insert('members', $this);
+        $this->projectid = $data['projectid'];
+        $this->memberid = $data['memberid'];
+        $this->details = $data['details'];
+        $this->date = $data['date'];
+        $this->type = $data['type'];
+        $this->priority = $data['priority'];
+        $this->status = $data['status'];
+        $this->db->insert('issues', $this);
     }
 
     function update($data) {
         $this->id = $data['id'];
-        $this->name = $data['name'];
-        $this->surname = $data['surname'];
-        $this->db->update('members', $this, array('id' => $data['id']));
+        $this->projectid = $data['projectid'];
+        $this->memberid = $data['memberid'];
+        $this->details = $data['details'];
+        $this->date = $data['date'];
+        $this->type = $data['type'];
+        $this->priority = $data['priority'];
+        $this->status = $data['status'];
+        $this->db->update('issues', $this, array('id' => $data['oldid']));
     }
 
     function delete() {
-        $this->db->query('delete from members where id = "' . $this->uri->segment(3) . '"');
+        $this->db->query('delete from issues where id = "' . $this->uri->segment(3) . '"');
     }
 
     function restoredb() {
@@ -41,5 +46,3 @@ class ModelMembers extends CI_Model {
     }
 
 }
-
-?>

@@ -20,8 +20,6 @@ class ModelProjects extends CI_Model {
     function update($data) {
         $this->id = $data['id'];
         $this->projectDetails = $data['projectDetails'];
-
-
         $this->db->update('projects', $this, array('id' => $data['oldid']));
     }
 

@@ -22,7 +22,7 @@ class ModelMembers extends CI_Model {
         $this->id = $data['id'];
         $this->name = $data['name'];
         $this->surname = $data['surname'];
-        $this->db->update('members', $this, array('id' => $data['id']));
+        $this->db->update('members', $this, array('id' => $data['oldid']));
     }
 
     function delete() {

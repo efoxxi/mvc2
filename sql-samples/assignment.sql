@@ -68,15 +68,15 @@ INSERT INTO csvmembers VALUES('zapbee', 'Zaphod', 'Beeblebrox', 'Jettube');
 # Creating DB tables
 
 CREATE TABLE issues (
+ 	id varchar(20) NOT NULL,  
   projectid varchar(20) NOT NULL,
   memberid varchar(20) NOT NULL,
-	issue varchar(20) NOT NULL,  
   details varchar(255) NOT NULL,
   date date NOT NULL,
   type varchar(20) NOT NULL,
   priority varchar(20) NOT NULL,
   status varchar(20) NOT NULL,
-  PRIMARY KEY (projectid,memberid,issue),
+  PRIMARY KEY (id,projectid,memberid),
   KEY projectid (projectid),
   KEY memberid (memberid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -118,7 +118,7 @@ INSERT INTO projectmembers SELECT DISTINCT p.id, m.id
   FROM members AS m, projects AS p, csvprojects AS cp, csvmembers AS cm
   WHERE cm.projectName = p.id AND m.id = cm.id AND p.id = cp.id;
 
-INSERT INTO issues SELECT DISTINCT p.id, memberName, issue, issueDetails, issueDate, issueType, priority, status
+INSERT INTO issues SELECT DISTINCT issue, p.id, memberName, issueDetails, issueDate, issueType, priority, status
   FROM projects AS p, members AS m, csvprojects AS cp
   WHERE issue NOT LIKE '' AND p.id = cp.id AND m.id = cp.memberName;
 
