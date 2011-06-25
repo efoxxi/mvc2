@@ -10,22 +10,52 @@
     <p>Issue:<br />
         <input type='text' name='issue' value="<?php echo $row->issue; ?>" /></p>
     <p>Project ID:<br />
-        <input type='text' name='projectid' value="<?php echo $row->projectid; ?>" /></p>
+        <select name="projectid">
+            <?php
+            foreach ($this->db->query("select id from projects")->result() as $project) {
+                echo "<option ";
+                if ($project->id == $row->projectid) { echo "selected "; }
+                echo "value=\"" . $project->id . "\">" . $project->id . "</option>\n";
+            }
+            ?>    
+        </select></p>
     <p>Member ID:<br />
-        <input type='text' name='memberid' value="<?php echo $row->memberid; ?>" /></p>
+        <select name="memberid">
+            <?php
+            foreach ($this->db->query("select id from members")->result() as $member) {
+                echo "<option ";
+                if ($member->id == $row->memberid) { echo "selected "; }
+                echo "value=\"" . $member->id . "\">" . $member->id . "</option>\n";
+            }
+            ?>    
+        </select></p>
     <p>Details:<br />
         <input type='text' name='details' value="<?php echo $row->details; ?>" /></p>
     <p>Date:<br />
         <input type='text' name='date' value="<?php echo $row->date; ?>" /></p>
     <p>Type:<br />
-        <input type='text' name='type' value="<?php echo $row->type; ?>" /></p>
+        <select name="type">
+            <option <?php if($row->type == "general") { echo "selected"; } ?> value="general">General</option>
+            <option <?php if($row->type == "bug") { echo "selected"; } ?> value="bug">Bug</option>
+            <option <?php if($row->type == "requirement") { echo "selected"; } ?> value="requirement">Requirement</option>
+        </select></p>
     <p>Priority:<br />
-        <input type='text' name='priority' value="<?php echo $row->priority; ?>" /></p>
+        <select name="priority">
+            <option <?php if($row->priority == "high") { echo "selected"; } ?> value="high">High</option>
+            <option <?php if($row->priority == "medium") { echo "selected"; } ?> value="medium">Medium</option>
+            <option <?php if($row->priority == "low") { echo "selected"; } ?> value="low">Low</option>
+        </select></p>
     <p>Status:<br />
-        <input type='text' name='status' value="<?php echo $row->status; ?>" /></p>
+        <select name="status">
+            <option <?php if($row->status == "open") { echo "selected"; } ?> value="open">Open</option>
+            <option <?php if($row->status == "resolved") { echo "selected"; } ?> value="resolved">Resolved</option>
+            <option <?php if($row->status == "discarded") { echo "selected"; } ?> value="discarded">Discarded</option>
+        </select></p>
     <p><input type='submit' value='Submit' /></p>
 <?php } ?>
 </form>
 <a href ="<?php echo base_url(); ?>index.php/<?php echo $this->uri->segment(1); ?>/index">Back to Issues List</a> 	
 
 <?php include_once("footer.php"); ?>
+
+

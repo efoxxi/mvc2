@@ -23,7 +23,6 @@ class Modelissues extends ModelIMP {
     }
 
     function update($data) {
-        //$this->id = "NULL";
         $this->issue = $data['issue'];
         $this->projectid = $data['projectid'];
         $this->memberid = $data['memberid'];

@@ -17,3 +17,4 @@
 <a href ="<?php echo base_url(); ?>index.php/<?php echo $this->uri->segment(1); ?>/index">Back to Members List</a> 	
 
 <?php include_once("footer.php"); ?>
+
