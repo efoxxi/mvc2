@@ -5,21 +5,12 @@
 <?php echo form_open($this->uri->segment(1) . '/insert'); ?>
 <p>Issue:<br />
     <input type='text' name='issue'></p>
-<p>Project ID:<br />
-    <select name="projectid">
+<p>Project&lt;-&gt;Member ID:<br />
+    <select name="pmid">
         <?php
-        foreach ($this->db->query("select id from projects")->result() as $project) {
+        foreach ($this->db->query("SELECT projectid, memberid FROM projectmembers")->result() as $pm) {
             echo "<option ";
-            echo "value=\"" . $project->id . "\">" . $project->id . "</option>\n";
-        }
-        ?>    
-    </select></p>
-<p>Member ID:<br />
-    <select name="memberid">
-        <?php
-        foreach ($this->db->query("select id from members")->result() as $member) {
-            echo "<option ";
-            echo "value=\"" . $member->id . "\">" . $member->id . "</option>\n";
+            echo "value=\"" . $pm->projectid . "/". $pm->memberid. "\">" . $pm->projectid . "/".$pm->memberid."</option>\n";
         }
         ?>    
     </select></p>

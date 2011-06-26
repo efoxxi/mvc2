@@ -24,5 +24,5 @@
 <p><input type='submit' value='Submit'></p>
 </form>
 
-<a href ="<?php echo base_url(); ?>index.php/<?php echo $this->uri->segment(1); ?>/index">Back to Project-Members List</a> 	
+<a href ="<?php echo base_url(); ?>index.php/<?php echo $this->uri->segment(1); ?>/index">Back to Project&lt;-&gt;Members List</a> 	
 <?php include_once("footer.php"); ?>

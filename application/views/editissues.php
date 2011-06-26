@@ -9,26 +9,16 @@
         <input type='text' name='id' value="<?php echo $row->id; ?>" readonly /></p>
     <p>Issue:<br />
         <input type='text' name='issue' value="<?php echo $row->issue; ?>" /></p>
-    <p>Project ID:<br />
-        <select name="projectid">
-            <?php
-            foreach ($this->db->query("select id from projects")->result() as $project) {
-                echo "<option ";
-                if ($project->id == $row->projectid) { echo "selected "; }
-                echo "value=\"" . $project->id . "\">" . $project->id . "</option>\n";
-            }
-            ?>    
-        </select></p>
-    <p>Member ID:<br />
-        <select name="memberid">
-            <?php
-            foreach ($this->db->query("select id from members")->result() as $member) {
-                echo "<option ";
-                if ($member->id == $row->memberid) { echo "selected "; }
-                echo "value=\"" . $member->id . "\">" . $member->id . "</option>\n";
-            }
-            ?>    
-        </select></p>
+    <p>Project&lt;-&gt;Member ID:<br />
+    <select name="pmid">
+        <?php
+        foreach ($this->db->query("SELECT projectid, memberid FROM projectmembers")->result() as $pm) {
+            echo "<option ";
+            if ($pm->projectid == $row->projectid && $pm->memberid == $row->memberid) { echo "selected "; }
+            echo "value=\"" . $pm->projectid . "/". $pm->memberid. "\">" . $pm->projectid . "/".$pm->memberid."</option>\n";
+        }
+        ?>    
+    </select></p>
     <p>Details:<br />
         <input type='text' name='details' value="<?php echo $row->details; ?>" /></p>
     <p>Date:<br />

@@ -12,8 +12,7 @@ class Modelissues extends ModelIMP {
     function insert($data) {
         $this->id = "";
         $this->issue = $data['issue'];
-        $this->projectid = $data['projectid'];
-        $this->memberid = $data['memberid'];
+        list($this->projectid, $this->memberid) = explode('/', $data['pmid']);
         $this->details = $data['details'];
         $this->date = $data['date'];
         $this->type = $data['type'];
@@ -33,8 +32,7 @@ class Modelissues extends ModelIMP {
 
     function update($data) {
         $this->issue = $data['issue'];
-        $this->projectid = $data['projectid'];
-        $this->memberid = $data['memberid'];
+        list($this->projectid, $this->memberid) = explode('/', $data['pmid']);
         $this->details = $data['details'];
         $this->date = $data['date'];
         $this->type = $data['type'];

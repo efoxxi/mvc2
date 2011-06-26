@@ -1,6 +1,6 @@
 <?php include_once("header.php"); ?>
 
-<?php echo anchor('pms/add', 'Add Project<->Member'); ?>
+<?php echo anchor('pms/add', 'Add Project&lt;-&gt;Member'); ?>
 <br />
 <?php echo anchor('pms/restoredb', 'Restore DB'); ?>
 
