@@ -1,6 +1,6 @@
 <?php include_once("header.php"); ?>
 
-<?php echo anchor('pms/add', 'Add Member'); ?>
+<?php echo anchor('pms/add', 'Add Project<->Member'); ?>
 <br />
 <?php echo anchor('pms/restoredb', 'Restore DB'); ?>
 
@@ -15,8 +15,8 @@
         <tr>
             <td><?php echo $row->projectid; ?></td>
             <td><?php echo $row->memberid; ?></td>
-            <td><?php echo anchor('pms/edit/' . $row->projectid, 'Edit'); ?></td>
-            <td><?php echo anchor('pms/delete/' . $row->projectid, 'Delete'); ?></td>
+            <td><?php echo anchor('pms/edit/' . $row->projectid . "/" . $row->memberid, 'Edit'); ?></td>
+            <td><?php echo anchor('pms/delete/' . $row->projectid . "/" . $row->memberid, 'Delete'); ?></td>
         </tr>
     <?php endforeach; ?>
 </table>

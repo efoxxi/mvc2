@@ -17,8 +17,8 @@ class ModelPms extends ModelIMP {
 
     function update($data) {
         $this->projectid = $data['projectid'];
-        $this->memberid = $data['memberid'];
-        $this->db->update('projectmembers', $this, array('projectid' => $data['oldid']));
+        $this->memberid = $data['memberid'];;
+        $this->db->update('projectmembers', $this, array('projectid' => $data['oldprojectid']));
     }
 
 }
