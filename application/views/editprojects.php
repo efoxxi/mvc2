@@ -8,7 +8,7 @@
     <p>Project ID:<br />
         <input type='text' name='id' value="<?php echo $row->id; ?>"></p>
     <p>Description:<br />
-        <input type='text' name='projectDetails' value="<?php echo $row->projectDetails; ?>"></p>
+        <input type='text' name='details' value="<?php echo $row->details; ?>"></p>
     <p><input type='submit' value='Submit'></p>
 <?php } ?>
 </form>

@@ -10,13 +10,13 @@ class ModelProjects extends ModelIMP {
 
     function insert($data) {
         $this->id = $data['id'];
-        $this->projectDetails = $data['projectDetails'];
+        $this->details = $data['details'];
         $this->db->insert($this->items, $this);
     }
 
     function update($data) {
         $this->id = $data['id'];
-        $this->projectDetails = $data['projectDetails'];
+        $this->details = $data['details'];
         $this->db->update($this->items, $this, array('id' => $data['oldid']));
     }
 

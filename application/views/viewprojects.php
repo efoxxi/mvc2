@@ -14,7 +14,7 @@
     <?php foreach ($res as $row): ?>
         <tr>
             <td><?php echo $row->id; ?></td>
-            <td><?php echo $row->projectDetails; ?></td>
+            <td><?php echo $row->details; ?></td>
             <td><?php echo anchor('projects/edit/' . $row->id, 'Edit'); ?></td>
             <td><?php echo anchor('projects/delete/' . $row->id, 'Delete'); ?></td>
         </tr>

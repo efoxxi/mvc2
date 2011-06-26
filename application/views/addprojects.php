@@ -6,7 +6,7 @@
 <p>Project ID:<br />
     <input type='text' name='id'></p>
 <p>Description:<br />
-    <input type='text' name='projectDetails'></p>
+    <input type='text' name='details'></p>
 <p><input type='submit' value='Submit'></p>
 </form>
 

@@ -11,8 +11,8 @@
 
 DROP TABLE IF EXISTS csvmembers;
 DROP TABLE IF EXISTS csvprojects;
-DROP TABLE IF EXISTS projectmembers;
 DROP TABLE IF EXISTS issues;
+DROP TABLE IF EXISTS projectmembers;
 DROP TABLE IF EXISTS members;
 DROP TABLE IF EXISTS projects;
 
@@ -64,21 +64,10 @@ INSERT INTO csvmembers VALUES('zapbee', 'Zaphod', 'Beeblebrox', 'Jettube');
 
 
 # Creating DB tables
-
-CREATE TABLE issues (
-  id int(11) NOT NULL AUTO_INCREMENT,
- 	issue varchar(20) NOT NULL,  
-  projectid varchar(20) NOT NULL,
-  memberid varchar(20) NOT NULL,
+CREATE TABLE projects (
+  id varchar(20) NOT NULL,
   details varchar(255) NOT NULL,
-  date date NOT NULL,
-  type varchar(20) NOT NULL,
-  priority varchar(20) NOT NULL,
-  status varchar(20) NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE KEY id (id),
-  KEY projectid (projectid),
-  KEY memberid (memberid)
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE members (
@@ -89,39 +78,42 @@ CREATE TABLE members (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE projectmembers (
+  id int(11) NOT NULL AUTO_INCREMENT,
   projectid varchar(20) NOT NULL,
   memberid varchar(20) NOT NULL,
-  PRIMARY KEY (projectid,memberid),
-  KEY projectid (projectid),
-  KEY memberid (memberid)
+  PRIMARY KEY (id),
+  KEY FK_projectmembers1 (memberid),
+  KEY FK_projectmembers2 (projectid),
+  CONSTRAINT FK_projectmembers2 FOREIGN KEY (projectid) REFERENCES projects (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT FK_projectmembers1 FOREIGN KEY (memberid) REFERENCES members (id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE projects (
-  id varchar(20) NOT NULL,
-  projectDetails varchar(255) NOT NULL,
-  PRIMARY KEY (id)
+CREATE TABLE issues (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  pmid int(11) NOT NULL,
+  issue varchar(20) NOT NULL,
+  details varchar(255) NOT NULL,
+  date date NOT NULL,
+  type varchar(20) NOT NULL,
+  priority varchar(20) NOT NULL,
+  status varchar(20) NOT NULL,
+  PRIMARY KEY (id),
+  KEY FK_issues (pmid),
+  CONSTRAINT FK_issues FOREIGN KEY (pmid) REFERENCES projectmembers (id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE issues
-  ADD CONSTRAINT issues_ibfk_1 FOREIGN KEY (projectid) REFERENCES projects (id) ON UPDATE NO ACTION,
-  ADD CONSTRAINT issues_ibfk_2 FOREIGN KEY (memberid) REFERENCES members (id) ON UPDATE NO ACTION;
-
-ALTER TABLE projectmembers
-  ADD CONSTRAINT projectmembers_ibfk_1 FOREIGN KEY (projectid) REFERENCES projects (id) ON UPDATE NO ACTION,
-  ADD CONSTRAINT projectmembers_ibfk_2 FOREIGN KEY (memberid) REFERENCES members (id) ON UPDATE NO ACTION;
 
 
 # Insert data
 INSERT INTO members SELECT DISTINCT id, name, surname FROM csvmembers;
 INSERT INTO projects SELECT DISTINCT id, projectDetails FROM csvprojects;
-INSERT INTO projectmembers SELECT DISTINCT p.id, m.id
+INSERT INTO projectmembers SELECT DISTINCT NULL, p.id, m.id
   FROM members AS m, projects AS p, csvprojects AS cp, csvmembers AS cm
   WHERE cm.projectName = p.id AND m.id = cm.id AND p.id = cp.id;
 
-INSERT INTO issues SELECT DISTINCT NULL, issue, p.id, memberName, issueDetails, issueDate, issueType, priority, status
-  FROM projects AS p, members AS m, csvprojects AS cp
-  WHERE issue NOT LIKE '' AND p.id = cp.id AND m.id = cp.memberName;
+INSERT INTO issues SELECT DISTINCT NULL, pm.id, issue, issueDetails, issueDate, issueType, priority, status
+  FROM projects AS p, members AS m, csvprojects AS cp, projectmembers AS pm
+  WHERE issue NOT LIKE '' AND p.id = cp.id AND m.id = cp.memberName AND pm.projectid = p.id AND pm.memberid = m.id;
 
 # Drop temporary tables
-DROP TABLE IF EXISTS csvmembers;
-DROP TABLE IF EXISTS csvprojects;
+#DROP TABLE IF EXISTS csvmembers;
+#DROP TABLE IF EXISTS csvprojects;
