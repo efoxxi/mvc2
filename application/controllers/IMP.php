@@ -53,7 +53,7 @@ class IMP extends CI_Controller {
     function update() {
         $data = $_POST;
         $this->{$this->modelitems}->update($data);
-        //redirect($this->items . '/index');
+        redirect($this->items . '/index');
     }
 
     function restoredb() {
@@ -63,4 +63,3 @@ class IMP extends CI_Controller {
 
 }
 ?>
-
