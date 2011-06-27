@@ -2,7 +2,6 @@
 
 <?php echo anchor('members/add', 'Add Member'); ?>
 <br />
-<?php echo anchor('members/restoredb', 'Restore DB'); ?>
 
 <table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
     <tr>

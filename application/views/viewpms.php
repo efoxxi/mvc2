@@ -2,7 +2,6 @@
 
 <?php echo anchor('pms/add', 'Add Project&lt;-&gt;Member'); ?>
 <br />
-<?php echo anchor('pms/restoredb', 'Restore DB'); ?>
 
 <table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
     <tr>

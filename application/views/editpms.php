@@ -4,8 +4,7 @@
 
 <?php echo form_open($this->uri->segment(1).'/update'); ?>
 <?php foreach ($query->result() as $row) { ?>
-        <input type='hidden' name='oldprojectid' value="<?php echo $row->projectid; ?>" />
-        <input type='hidden' name='oldmemberid' value="<?php echo $row->memberid; ?>" />
+        <input type='hidden' name='oldid' value="<?php echo $row->id; ?>" />
     <p>Project ID:<br />
     <select name="projectid">
         <?php

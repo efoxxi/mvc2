@@ -2,7 +2,6 @@
 
 <?php echo anchor('projects/add', 'Add Project'); ?>
 <br />
-<?php echo anchor('projects/restoredb', 'Restore DB'); ?>
 
 <table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
     <tr>

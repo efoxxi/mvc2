@@ -14,6 +14,7 @@ class ModelPms extends ModelIMP {
         $query = $this->db->get("projectmembers");
         return $query->result();
     }
+
     function insert($data) {
         $this->projectid = $data['projectid'];
         $this->memberid = $data['memberid'];
@@ -22,10 +23,11 @@ class ModelPms extends ModelIMP {
 
     function update($data) {
         $this->projectid = $data['projectid'];
-        $this->memberid = $data['memberid'];;
+        $this->memberid = $data['memberid'];
+        ;
         $this->db->update('projectmembers', $this, array('id' => $data['oldid']));
     }
-  
+
 }
 
 ?>
