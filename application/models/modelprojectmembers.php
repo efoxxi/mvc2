@@ -2,9 +2,9 @@
 
 include_once("modelIMP.php");
 
-class ModelPms extends ModelIMP {
+class ModelProjectmembers extends ModelIMP {
 
-    function ModelPms() {
+    function ModelProjectmembers() {
         parent::__construct();
         $this->items = "projectmembers";
     }

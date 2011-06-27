@@ -9,5 +9,5 @@
         <?php echo anchor('members/index', 'Member'); ?>
         <?php echo anchor('projects/index', 'Projects'); ?>
         <?php echo anchor('issues/index', 'Issues'); ?>
-        <?php echo anchor('pms/index', 'Project-Members'); ?>
+        <?php echo anchor('projectmembers/index', 'Project-Members'); ?>
         </h3>
