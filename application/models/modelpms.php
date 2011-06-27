@@ -9,6 +9,11 @@ class ModelPms extends ModelIMP {
         $this->items = "projectmembers";
     }
 
+    function get_all() {
+        $this->db->order_by("projectid, memberid");
+        $query = $this->db->get("projectmembers");
+        return $query->result();
+    }
     function insert($data) {
         $this->projectid = $data['projectid'];
         $this->memberid = $data['memberid'];
@@ -18,13 +23,9 @@ class ModelPms extends ModelIMP {
     function update($data) {
         $this->projectid = $data['projectid'];
         $this->memberid = $data['memberid'];;
-        $this->db->update('projectmembers', $this, array('projectid' => $data['oldprojectid'], 'memberid' => $data['oldmemberid']));
+        $this->db->update('projectmembers', $this, array('id' => $data['oldid']));
     }
-    
-    function delete() {
-        $this->db->query("DELETE FROM projectmembers WHERE projectid = '" . $this->uri->segment(3) . "' AND memberid = '" . $this->uri->segment(4) . "'");
-    }
-
+  
 }
 
 ?>

@@ -8,12 +8,12 @@
 <p>Project&lt;-&gt;Member ID:<br />
     <select name="pmid">
         <?php
-        foreach ($this->db->query("SELECT projectid, memberid FROM projectmembers")->result() as $pm) {
-            echo "<option ";
-            echo "value=\"" . $pm->projectid . "/". $pm->memberid. "\">" . $pm->projectid . "/".$pm->memberid."</option>\n";
+        foreach ($this->db->query("SELECT id, projectid, memberid FROM projectmembers ORDER BY projectid, memberid")->result() as $pm) {
+            echo "<option value=\"" . $pm->id . "\">" . $pm->projectid . "/" . $pm->memberid . "</option>\n";
         }
         ?>    
-    </select></p>
+    </select>
+</p>
 <p>Details:<br />
     <input type='text' name='details'></p>
 <p>Date:<br />

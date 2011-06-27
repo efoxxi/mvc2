@@ -82,10 +82,11 @@ CREATE TABLE projectmembers (
   projectid varchar(20) NOT NULL,
   memberid varchar(20) NOT NULL,
   PRIMARY KEY (id),
-  KEY FK_projectmembers1 (memberid),
-  KEY FK_projectmembers2 (projectid),
-  CONSTRAINT FK_projectmembers2 FOREIGN KEY (projectid) REFERENCES projects (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT FK_projectmembers1 FOREIGN KEY (memberid) REFERENCES members (id) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY pmunique (projectid,memberid),
+  KEY FK_pm1 (projectid),  
+  KEY FK_pm2 (memberid),
+  CONSTRAINT FK_pm1 FOREIGN KEY (projectid) REFERENCES projects (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT FK_pm2 FOREIGN KEY (memberid) REFERENCES members (id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE issues (

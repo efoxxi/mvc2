@@ -6,7 +6,6 @@
 
 <table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
     <tr>
-        <th>Issue ID</th>
         <th>Issue</th>        
         <th>Project ID</th>
         <th>Member ID</th>
@@ -20,10 +19,9 @@
     </tr>
     <?php foreach ($res as $row): ?>
         <tr>
-            <td><?php echo $row->id; ?></td>
             <td><?php echo $row->issue; ?></td>
-            <td><?php echo $row->projectid; ?></td>
-            <td><?php echo $row->memberid; ?></td>
+            <td><?php foreach ($this->db->query("SELECT projectid FROM projectmembers AS pm WHERE pm.id = " . $row->pmid)->result() as $result) echo $result->projectid; ?></td>
+            <td><?php foreach ($this->db->query("SELECT memberid FROM projectmembers AS pm WHERE pm.id = " . $row->pmid)->result() as $result) echo $result->memberid; ?></td>
             <td><?php echo $row->details; ?></td>
             <td><?php echo $row->date; ?></td>
             <td><?php echo $row->type; ?></td>

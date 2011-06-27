@@ -7,18 +7,18 @@
         <input type='hidden' name='oldid' value="<?php echo $row->id; ?>" />
     <p>Issue ID:<br />
         <input type='text' name='id' value="<?php echo $row->id; ?>" readonly /></p>
-    <p>Issue:<br />
-        <input type='text' name='issue' value="<?php echo $row->issue; ?>" /></p>
     <p>Project&lt;-&gt;Member ID:<br />
     <select name="pmid">
         <?php
-        foreach ($this->db->query("SELECT projectid, memberid FROM projectmembers")->result() as $pm) {
+        foreach ($this->db->query("SELECT id, projectid, memberid FROM projectmembers ORDER BY projectid, memberid")->result() as $pm) {
             echo "<option ";
-            if ($pm->projectid == $row->projectid && $pm->memberid == $row->memberid) { echo "selected "; }
-            echo "value=\"" . $pm->projectid . "/". $pm->memberid. "\">" . $pm->projectid . "/".$pm->memberid."</option>\n";
+            if ($row->pmid == $pm->id) { echo "selected "; }
+            echo "value=\"" . $pm->id . "\">" . $pm->projectid . "/" . $pm->memberid . "</option>\n";
         }
         ?>    
     </select></p>
+    <p>Issue:<br />
+        <input type='text' name='issue' value="<?php echo $row->issue; ?>" /></p>
     <p>Details:<br />
         <input type='text' name='details' value="<?php echo $row->details; ?>" /></p>
     <p>Date:<br />

@@ -15,8 +15,8 @@
         <tr>
             <td><?php echo $row->projectid; ?></td>
             <td><?php echo $row->memberid; ?></td>
-            <td><?php echo anchor('pms/edit/' . $row->projectid . "/" . $row->memberid, 'Edit'); ?></td>
-            <td><?php echo anchor('pms/delete/' . $row->projectid . "/" . $row->memberid, 'Delete'); ?></td>
+            <td><?php echo anchor('pms/edit/' . $row->id, 'Edit'); ?></td>
+            <td><?php echo anchor('pms/delete/' . $row->id, 'Delete'); ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
