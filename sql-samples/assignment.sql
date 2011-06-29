@@ -9,6 +9,9 @@
 
 # Cleaning current DB
 
+DROP VIEW IF EXISTS report1;
+DROP VIEW IF EXISTS report2;
+
 DROP TABLE IF EXISTS csvmembers;
 DROP TABLE IF EXISTS csvprojects;
 DROP TABLE IF EXISTS issues;
@@ -118,3 +121,6 @@ INSERT INTO issues SELECT DISTINCT NULL, pm.id, issue, issueDetails, issueDate, 
 # Drop temporary tables
 #DROP TABLE IF EXISTS csvmembers;
 #DROP TABLE IF EXISTS csvprojects;
+
+CREATE VIEW report1 AS SELECT i.issue, i.details, m.name, m.surname, p.id AS 'projectname' FROM members AS m, issues AS i, projects as p, projectmembers AS pm WHERE pm.id = i.pmid AND pm.memberid = m.id AND pm.projectid = p.id AND i.status NOT LIKE "open";
+CREATE VIEW report2 AS SELECT i.issue, i.details, m.name, m.surname, p.id AS 'projectname' FROM members AS m, issues AS i, projects as p, projectmembers AS pm WHERE pm.id = i.pmid AND pm.memberid = m.id AND pm.projectid = p.id AND i.priority LIKE "high";
