@@ -1,5 +1,4 @@
 <?php include_once("header.php"); ?>
-
 <br /><h3><?php echo $report; ?></h3>
 <table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
     <tr>
