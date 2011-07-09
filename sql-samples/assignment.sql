@@ -1,11 +1,11 @@
-##############################################
-#                                            #
-#	Assignment                                 #
-#	04/14/2011                                 #
-#                                            #
-# Mikhail Kotov                              #
-#                                            #
-##############################################
+#
+# Web Programming 2 PHP/Database Application Assignment
+# Last update: 01/07/2011
+#
+# Mikhail Kotov
+# James Zuccon
+# Reece Dixon
+#
 
 # Cleaning current DB
 
