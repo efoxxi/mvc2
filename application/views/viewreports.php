@@ -8,7 +8,7 @@ echo anchor('reports/index/5', 'Report 5')."&nbsp;\n";
 echo anchor('reports/index/6', 'Report 6')."\n";
 ?>
 
-<br /><h3><?php echo $report; ?></h3>
+<br /><h3><?php echo $report[$this->uri->segment(3)]; ?></h3>
 <table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
     <tr>
         <?php

@@ -11,6 +11,10 @@
 
 DROP VIEW IF EXISTS report1;
 DROP VIEW IF EXISTS report2;
+DROP VIEW IF EXISTS report3;
+DROP VIEW IF EXISTS report4;
+DROP VIEW IF EXISTS report5;
+DROP VIEW IF EXISTS report6;
 
 DROP TABLE IF EXISTS csvmembers;
 DROP TABLE IF EXISTS csvprojects;
@@ -145,5 +149,5 @@ CREATE VIEW report5 AS SELECT m.name, m.surname, i.issue, i.details, i.status FR
 WHERE pm.projectid = p.id AND pm.memberid = m.id AND pm.id = i.pmid AND i.status LIKE 'open';
 
 # number of issues which have been resolved in each project
-CREATE VIEW report6 AS SELECT COUNT(i.id) FROM projects AS p, issues AS i, members AS m, projectmembers AS pm
+CREATE VIEW report6 AS SELECT COUNT(i.id) AS 'Resolved Issues' FROM projects AS p, issues AS i, members AS m, projectmembers AS pm
 WHERE pm.projectid = p.id AND pm.memberid = m.id AND pm.id = i.pmid AND i.status LIKE 'resolved';
