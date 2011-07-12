@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: normal small "Trebuchet MS", Arial, Helvetica, sans-serif;
+    background-color: #999;
+    background-image: url(images/bg.jpg);
+}
+
+h3 {
+    margin-bottom: 20px;    
+}
+
+input, select {
+    margin-bottom: 10px;
+}
+
+table {
+    border-width: 0px;
+    border-spacing: 2px;
+    border-style: outset;
+    border-collapse: separate;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+table th {
+    border-width: 0px;
+    padding: 2px;
+    border-style: ridge;
+}
+
+table td {
+    border-width: 0px;
+    padding: 2px;
+    border-style: ridge;
+    background-color: #D2D2D2;
+}
+
+#main {
+    width: 1024px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#menu1 ul {
+    list-style: none ;
+    display: inline ;
+}
+
+#menu1 ul li {
+    display: inline ;
+    text-align: center ;
+    list-style: none ;
+    font-family: Arial, Helvetica, sans-serif ;
+}
+#menu1 li a {
+    color: #000 ;
+    background-color: #ffb200 ;
+    border: 1px outset #b37d00 ;
+    padding: 8px ;
+    text-decoration: none ;
+    display: inline ;
+}
+#menu1 li a:hover {
+    color: #fff ;
+    background-color: #b37d00 ;
+}
+
+
+#menu2 ul {
+    list-style: none ;
+    display: inline ;
+}
+
+#menu2 ul li {
+    display: inline ;
+    text-align: center ;
+    list-style: none ;
+    font-family: Arial, Helvetica, sans-serif ;
+}
+#menu2 li a {
+    color: #000 ;
+    background-color: #9cf ;
+    border: 1px outset #00f ;
+    padding: 8px ;
+    text-decoration: none ;
+    display: inline ;
+}
+#menu2 li a:hover {
+    color: #ff0 ;
+    background-color: #0000c0 ;
+}

@@ -27,6 +27,11 @@ $config['base_url'] = "http://192.168.5.10/mvc/";
   |
  */
 $config['index_page'] = "index.php";
+$config['css']    = "/system/application/assets/css/style.css";
+$config['scripts']    = "/system/application/assets/scripts/";
+$config['site_images']    = "/system/application/assets/site-images/";
+$config['images']    = "/system/application/assets/images/";
+
 
 /*
   |--------------------------------------------------------------------------

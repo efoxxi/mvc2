@@ -6,11 +6,7 @@
 body {
 	font: normal small "Trebuchet MS", Arial, Helvetica, sans-serif;
 	background-color: #999;
-	background-image: url(bg.jpg);
-}
-
-h3 {
-	padding-bottom: 20px;		
+	background-image: url(images/bg.jpg);
 }
 
 table.sample {
