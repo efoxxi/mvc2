@@ -3,7 +3,7 @@
 <?php echo anchor('projects/add', 'Add Project'); ?>
 <br />
 
-<table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
+<table>
     <tr>
         <th>Project ID</th>
         <th>Description</th>

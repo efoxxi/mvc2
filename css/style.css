@@ -24,19 +24,28 @@ table {
     border-collapse: separate;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 table th {
     border-width: 0px;
     padding: 2px;
     border-style: ridge;
+    background-color: #FAFAFA;
 }
 
-table td {
+td.h1 {
     border-width: 0px;
     padding: 2px;
     border-style: ridge;
-    background-color: #D2D2D2;
+    background-color: #EEE;
+}
+
+td.h2 {
+    border-width: 0px;
+    padding: 2px;
+    border-style: ridge;
+    background-color: #DDD;
 }
 
 #main {
@@ -92,4 +101,18 @@ table td {
 #menu2 li a:hover {
     color: #ff0 ;
     background-color: #0000c0 ;
+}
+
+a {
+    color: #000 ;
+    background-color: #D2D2D2 ;
+    border: 1px outset #000 ;
+    padding: 2px ;
+    text-decoration: none ;
+    display: inline ;
+}
+
+a:hover {
+    color: #fff ;
+    background-color: #000 ;
 }

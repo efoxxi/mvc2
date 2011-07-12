@@ -3,7 +3,7 @@
 <?php echo anchor('members/add', 'Add Member'); ?>
 <br />
 
-<table width="57%" border="1" cellspacing="0" cellpadding="0" align="center">
+<table>
     <tr>
         <th>Member ID</th>
         <th>Name</th>

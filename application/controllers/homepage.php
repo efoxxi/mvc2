@@ -11,7 +11,9 @@ class Homepage extends CI_Controller {
 
     
     function index() {
-        $this->load->view('viewhomepage');
+        $data['title'] = "Homepage";
+        $data['heading'] = "Homepage";
+        $this->load->view('viewhomepage', $data);
     }
 
 }

@@ -23,6 +23,7 @@ table.sample th {
 	border-width: 0px;
 	padding: 2px;
 	border-style: ridge;
+	background-color: #E0E0E0;
 }
 
 table.sample td {

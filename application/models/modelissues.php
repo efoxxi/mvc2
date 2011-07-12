@@ -8,6 +8,16 @@ class Modelissues extends ModelIMP {
         parent::__construct();
         $this->items = "issues";
     }
+    
+    
+    function get_all() {
+        $query = $this->db->query('SELECT id, issue, pmid, details, date, type, priority, status FROM issues');
+        return $query->result();
+    }
+
+    function delete() {
+        $this->db->query('delete from ' . $this->items . ' where id = "' . $this->uri->segment(3) . '"');
+    }
 
     function insert($data) {
         $this->id = "";
