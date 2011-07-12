@@ -2,6 +2,10 @@
 $s1 = $this->uri->segment(1);
 $s2 = $this->uri->segment(2);
 $s3 = $this->uri->segment(3);
+
+function echotd($curr_h, $value) {
+    echo "<td class=\"h" . $curr_h . "\">" . $value . "</td>\n";
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
