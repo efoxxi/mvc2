@@ -3,34 +3,8 @@
 include_once("header.php");
 echo anchor('issues/add', 'Add Issue');
 
-function echotable($arr) {
-    $curr_h = 1; // color of row
 
-    echo "<br />\n";
-    echo "<table>\n";
-    echo "<tr>\n";
-    foreach ($arr[0] as $value)
-        echo "<th>" . $value . "</th>\n";
-    echo "</tr>\n";
-
-    for ($r = 1; $r < count($arr); $r++) {
-        $row = $arr[$r];
-        echo "<tr>\n";
-        foreach ($row as $value)
-            echo "<td class=\"h" . $curr_h . "\">" . $value . "</td>\n";
-        echo "<td class=\"h" . $curr_h . "\">" . anchor('issues/edit/' .   $row[0], 'Edit')   . "</td>\n";
-        echo "<td class=\"h" . $curr_h . "\">" . anchor('issues/delete/' . $row[0], 'Delete') . "</td>\n";
-        
-        if ($curr_h == 1) {
-            $curr_h = 2;
-        } else {
-            $curr_h = 1;
-        }
-    }
-    echo "</table>\n";
-}
-
-$arr3[0] = array("Issue ID", "Issue", "Project ID", "Member ID", "Description", "Date", "Type", "Priority", "Status", "&nbsp;", "&nbsp;");
+$arr[0] = array("Issue ID", "Issue", "Project ID", "Member ID", "Description", "Date", "Type", "Priority", "Status");
 $r = 1; // row in table
 foreach ($res as $row) {
     foreach ($row as $value) {
@@ -52,7 +26,7 @@ foreach ($res as $row) {
 
     $c = 0;
     foreach ($arr2 as $value) {
-        $arr3[$r][$c] = $value;
+        $arr[$r][$c] = $value;
         $c++;
     }
     unset($arr1, $arr2);
@@ -60,7 +34,7 @@ foreach ($res as $row) {
     $r++;
 }
 
-echotable($arr3);
+echotable($arr, $s1);
 
 include_once("footer.php");
 ?>

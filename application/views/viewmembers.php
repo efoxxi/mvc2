@@ -1,25 +1,10 @@
-<?php include_once("header.php"); ?>
+<?php
+include_once("header.php");
+echo anchor('members/add', 'Add Member');
 
-<?php echo anchor('members/add', 'Add Member'); ?>
-<br />
+$arr[0] = array("Member ID", "First Name", "Last Name");
+preparetable($arr, $res);
+echotable($arr, $s1);
 
-<table>
-    <tr>
-        <th>Member ID</th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($res as $row): ?>
-        <tr>
-            <td><?php echo $row->id; ?></td>
-            <td><?php echo $row->name; ?></td>
-            <td><?php echo $row->surname; ?></td>
-            <td><?php echo anchor('members/edit/' . $row->id, 'Edit'); ?></td>
-            <td><?php echo anchor('members/delete/' . $row->id, 'Delete'); ?></td>
-        </tr>
-    <?php endforeach; ?>
-</table>
-
-<?php include_once("footer.php"); ?>
+include_once("footer.php");
+?>

@@ -3,8 +3,49 @@ $s1 = $this->uri->segment(1);
 $s2 = $this->uri->segment(2);
 $s3 = $this->uri->segment(3);
 
-function echotd($curr_h, $value) {
-    echo "<td class=\"h" . $curr_h . "\">" . $value . "</td>\n";
+function preparetable(&$arr, $res) {
+    $r = 1; // row in table
+    foreach ($res as $row) {
+        $c = 0;
+        foreach ($row as $value) {
+            $arr[$r][$c] = $value;
+            $c++;
+        }
+        $r++;
+    }
+}
+
+function echotable($arr, $s1 = NULL) {
+    $curr_h = 1; // color of row
+
+    echo "<br />\n";
+    echo "<table>\n";
+    echo "<tr>\n";
+    foreach ($arr[0] as $value)
+        echo "<th>" . $value . "</th>\n";
+    if (isset($s1)) {
+        echo "<th>&nbsp;</th>\n";
+        echo "<th>&nbsp;</th>\n";
+    }
+    echo "</tr>\n";
+
+    for ($r = 1; $r < count($arr); $r++) {
+        $row = $arr[$r];
+        echo "<tr>\n";
+        foreach ($row as $value)
+            echo "<td class=\"h" . $curr_h . "\">" . $value . "</td>\n";
+        if (isset($s1)) {
+            echo "<td class=\"h" . $curr_h . "\">" . anchor($s1 . '/edit/' . $row[0], 'Edit') . "</td>\n";
+            echo "<td class=\"h" . $curr_h . "\">" . anchor($s1 . '/delete/' . $row[0], 'Delete') . "</td>\n";
+        }
+
+        if ($curr_h == 1) {
+            $curr_h = 2;
+        } else {
+            $curr_h = 1;
+        }
+    }
+    echo "</table>\n";
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
